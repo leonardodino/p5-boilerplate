@@ -1,17 +1,33 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
+const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
 
-const isDev = !process.env.WEBPACK_COMPILE
-const devServer = isDev ? {inline: true, hot: true, port: 3333} : undefined
+const srcDir = path.join(__dirname, 'src')
+const appHtmlTitle = 'Webpack Boilerplate'
+const PORT = parseInt(process.env.PORT || 5000)
 
 module.exports = {
-	devtool: 'inline-sourcemap',
-	entry: __dirname + '/src/js/app.js',
-	output: {
-		path: __dirname + '/dist/',
-		publicPath: '/',
-		filename: 'js/app.js'
+	devtool: 'eval-source-map',
+	entry: {
+		app: path.join(srcDir, 'js', 'app'),
 	},
-	devServer: devServer,
+	output: {
+		filename: '[name].[hash].js',
+		chunkFilename: '[name].[chunkhash].js',
+	},
+	devServer: {
+		inline: true,
+		hot: true,
+		port: PORT,
+		stats: 'minimal',
+		overlay: {
+			warnings: true,
+			errors: true
+		},
+	},
 	module: {
 		loaders: [
 			{
@@ -19,19 +35,35 @@ module.exports = {
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
-					presets: ['env']
-				}
+					presets: ['env'],
+				},
 			},
 			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader'
-			}
-		]
+				loader: 'style-loader!css-loader',
+			},
+			{
+				test: /\.pug$/,
+				loader: 'pug-loader'
+			},
+		],
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{ from: 'src/index.html', to: 'index.html' },
-			{ from: 'src/assets', to: 'assets' }
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor',
+			minChunks: ({ resource }) => /node_modules/.test(resource),
+		}),
+		new webpack.optimize.CommonsChunkPlugin('manifest'),
+		new CopyPlugin([
+			{from: path.join(srcDir, 'assets'), to: 'assets'},
 		]),
-	]
+		new HtmlPlugin({
+			template: path.join(srcDir, 'index.pug'),
+		}),
+		new ScriptExtHtmlPlugin({
+			defaultAttribute: 'defer',
+			inline: 'manifest',
+		}),
+		new WebpackMd5Hash(),
+	],
 }
