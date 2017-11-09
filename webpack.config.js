@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-	devtool: "inline-sourcemap",
+	devtool: 'inline-sourcemap',
 	entry: __dirname + '/src/js/sketch.js',
 	output: {
 		path: __dirname + '/dist/',
@@ -26,14 +26,14 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loader: "style-loader!css-loader"
+				loader: 'style-loader!css-loader'
 			}
 		]
 	},
 	plugins: [
-    new CopyWebpackPlugin([
-      { from: 'src/index.html', to: 'index.html' },
-      { from: 'src/assets', to: 'assets' }
-    ])
-  ]
+		new CopyWebpackPlugin([
+			{ from: 'src/index.html', to: 'index.html' },
+			{ from: 'src/assets', to: 'assets' }
+		])
+	]
 }
