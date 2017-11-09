@@ -3,25 +3,24 @@ let logo
 const logoWidth = 250
 const logoHeight = 114
 
-export const preload = () => {
+export function preload(){
 	logo = loadImage('assets/p5js.svg')
 }
 
-export const setup = () => {
+export function setup(){
 	canvas = createCanvas(windowWidth, windowHeight)
 	image(logo, windowWidth/2 - logoWidth/2, windowHeight/2 - logoHeight/2)
 }
 
-export const draw = () => {
+export function draw(){
 
 }
 
-export const windowResized = () => {
+export function windowResized(){
 	resizeCanvas(windowWidth, windowHeight)
 	image(logo, windowWidth/2 - logoWidth/2, windowHeight/2 - logoHeight/2)
 }
 
-export const keyPressed = () => {
+export function keyPressed(){
 
 }
-
