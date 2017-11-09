@@ -1,5 +1,7 @@
-const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const isDev = !process.env.WEBPACK_COMPILE
+const devServer = isDev ? {inline: true, hot: true, port: 3333} : undefined
 
 module.exports = {
 	devtool: 'inline-sourcemap',
@@ -9,11 +11,7 @@ module.exports = {
 		publicPath: '/',
 		filename: 'js/app.js'
 	},
-	devServer: {
-		inline: true,
-		hot: true,
-		port: 3333
-	},
+	devServer: devServer,
 	module: {
 		loaders: [
 			{
@@ -34,6 +32,6 @@ module.exports = {
 		new CopyWebpackPlugin([
 			{ from: 'src/index.html', to: 'index.html' },
 			{ from: 'src/assets', to: 'assets' }
-		])
+		]),
 	]
 }
