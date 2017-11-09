@@ -3,11 +3,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 	devtool: 'inline-sourcemap',
-	entry: __dirname + '/src/js/sketch.js',
+	entry: __dirname + '/src/js/app.js',
 	output: {
 		path: __dirname + '/dist/',
 		publicPath: '/',
-		filename: 'js/sketch.js'
+		filename: 'js/app.js'
 	},
 	devServer: {
 		inline: true,

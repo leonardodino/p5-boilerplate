@@ -1,14 +1,11 @@
-import p5 from 'p5'
-import '../css/style.css'
-
-const sketch = p => {
+export default p => {
 	let canvas
 	let logo
-	let logoWidth = 250
-	let logoHeight = 114
+	const logoWidth = 250
+	const logoHeight = 114
 
 	p.preload = () => {
-		logo = p.loadImage("assets/p5js.svg")
+		logo = p.loadImage('assets/p5js.svg')
 	}
 
 	p.setup = () => {
@@ -29,5 +26,3 @@ const sketch = p => {
 
 	}
 }
-
-new p5(sketch)
