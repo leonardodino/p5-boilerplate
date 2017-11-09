@@ -1,4 +1,5 @@
-# p5-es6-boilerplate
+# p5-boilerplate
+[origin](https://github.com/mkontogiannis/p5.js-boilerplate)
 
 Boilerplate for writing p5 sketches in es6
 
@@ -6,12 +7,12 @@ Boilerplate for writing p5 sketches in es6
 
 Clone this repository:
 ```bash
-git clone --depth 1 https://github.com/leonardodino/p5-es6-boilerplate.git
+git clone --depth 1 https://github.com/leonardodino/p5-boilerplate.git
 ```
 
 Cd into the directory and install the dependencies:
 ```bash
-$ cd p5-es6-boilerplate
+$ cd p5-boilerplate
 $ yarn
 ```
 
@@ -23,3 +24,4 @@ yarn dev
 Use the following command when done to build the bundled minified result under the `/dist` folder:
 yarn build
 ```
+
