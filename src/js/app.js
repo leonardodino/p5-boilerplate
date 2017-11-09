@@ -1,5 +1,5 @@
 import p5 from 'p5'
 import '../css/style.css'
-import sketch from './sketch.js'
-
-new p5(sketch(window))
+import * as sketch from './sketch.js'
+Object.assign(window, sketch)
+new p5()
