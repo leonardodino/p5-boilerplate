@@ -32,8 +32,11 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
 				loader: 'babel-loader',
+				include: [
+					srcDir,
+					/node_modules\/webpack-dev-server/, // webpack-dev-server#1090
+				],
 				query: {
 					presets: ['env'],
 				},
