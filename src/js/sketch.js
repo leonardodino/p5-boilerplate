@@ -1,28 +1,30 @@
-export default p => {
+export default p5 => {
 	let canvas
 	let logo
 	const logoWidth = 250
 	const logoHeight = 114
 
-	p.preload = () => {
-		logo = p.loadImage('assets/p5js.svg')
+	p5.preload = () => {
+		logo = loadImage('assets/p5js.svg')
 	}
 
-	p.setup = () => {
-		canvas = p.createCanvas(p.windowWidth, p.windowHeight)
-		p.image(logo, p.windowWidth/2 - logoWidth/2, p.windowHeight/2 - logoHeight/2)
+	p5.setup = () => {
+		canvas = createCanvas(windowWidth, windowHeight)
+		image(logo, windowWidth/2 - logoWidth/2, windowHeight/2 - logoHeight/2)
 	}
 
-	p.draw = () => {
+	p5.draw = () => {
 
 	}
 
-	p.windowResized = () => {
-		p.resizeCanvas(p.windowWidth, p.windowHeight)
-		p.image(logo, p.windowWidth/2 - logoWidth/2, p.windowHeight/2 - logoHeight/2)
+	p5.windowResized = () => {
+		resizeCanvas(windowWidth, windowHeight)
+		image(logo, windowWidth/2 - logoWidth/2, windowHeight/2 - logoHeight/2)
 	}
 
-	p.keyPressed = () => {
+	p5.keyPressed = () => {
 
 	}
+
+	return p5
 }
