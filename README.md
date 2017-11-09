@@ -2,25 +2,23 @@
 
 Boilerplate for writing p5 sketches in es6
 
-## Usage
+## Clone / Install
 
-Clone this repository:
+replace `project-name` with desired folder name
+
 ```bash
-git clone --depth 1 https://github.com/leonardodino/p5-boilerplate.git
+git clone --depth 1 https://github.com/leonardodino/p5-boilerplate.git project-name
+cd project-name
+yarn
 ```
 
-Cd into the directory and install the dependencies:
-```bash
-$ cd p5-boilerplate
-$ yarn
-```
+## Dev Server
 
-Use the following command while writing a sketch to start the dev server with hot reloading:
 ```bash
 yarn dev
 ```
 
-Use the following command when done to build the bundled minified result under the `/dist` folder:
+## Compile
 ```bash
 yarn build
 ```
