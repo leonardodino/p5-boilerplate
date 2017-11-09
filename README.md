@@ -1,5 +1,4 @@
 # p5-boilerplate
-[origin](https://github.com/mkontogiannis/p5.js-boilerplate)
 
 Boilerplate for writing p5 sketches in es6
 
@@ -22,6 +21,6 @@ yarn dev
 ```
 
 Use the following command when done to build the bundled minified result under the `/dist` folder:
+```bash
 yarn build
 ```
-
